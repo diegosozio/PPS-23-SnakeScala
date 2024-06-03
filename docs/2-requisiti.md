@@ -1,7 +1,5 @@
 # Requisiti
 
-\todo[color=purple]{manca screen gui implementata }
-
 ### Business
 
 Creazione di un'applicativo che permetta di giocare a Snake implementando le meccaniche di base del gioco arcade. Il gioco deve essere implementato in modo da permettere a un singolo giocatore di controllare un serpente che si muove all'interno di una griglia. Il serpente deve crescere di dimensioni ogni volta che mangia del cibo, e il gioco termina se il serpente colpisce se stesso o i bordi della griglia.

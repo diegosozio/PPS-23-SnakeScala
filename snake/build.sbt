@@ -8,3 +8,5 @@ lazy val root = (project in file("."))
   )
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.18"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.18" % "test"
+
+resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"

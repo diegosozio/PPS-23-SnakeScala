@@ -3,45 +3,42 @@ package snake
 import org.scalatest.funspec.AnyFunSpec
 
 class EnvironmentSuite extends AnyFunSpec  {
-  val env: Environment = new Environment(20, 20)
+  var env:Environment = _
 
   describe("An Environment"){
-
     describe("when empty"){
       it("should has not any food"){
-        assert(env.foods.isEmpty)
-      }
-      it("should has not any snake"){
-        assert(env.snake == null)
-      }
-      it("should has not any food in place"){
-        assert(env.totalFoodOnThePlate == 0)
-      }
-    }
-
-    describe("when game start"){
-      env.addSnake()
-
-      it("should has the snake") {
-        assert(env.snake != null)
+        env = new Environment(20, 20)
+        assert(env.getPlacedFood.isEmpty)
       }
     }
 
     describe("when add food"){
-      env.createFood()
-
-      it("should place 1 food"){
-        assert(env.foods.length == 1)
-        assert(env.totalFoodOnThePlate == 1)
+      it("should place food"){
+        env = new Environment(20, 20)
+        env.addFood()
+        assert(env.getPlacedFood.isDefined)
       }
     }
 
     describe("when add an other food") {
-      env.createFood()
+      it("should not replace the food") {
+        env = new Environment(20, 20)
+        env.addFood()
+        val prevFood = env.getPlacedFood
+        env.addFood()
+        assert(env.getPlacedFood == prevFood)
+      }
+    }
 
-      it("should not place any food") {
-        assert(env.foods.length == 1)
-        assert(env.totalFoodOnThePlate == 1)
+    describe("with some food"){
+      describe("when the food is eaten"){
+        it("should remove the food"){
+          env = new Environment(20, 20)
+          env.addFood()
+          env.tryEatFood(env.getPlacedFood.get)
+          assert(env.getPlacedFood.isEmpty)
+        }
       }
     }
   }

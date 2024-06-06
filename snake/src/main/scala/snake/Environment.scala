@@ -1,19 +1,31 @@
 package snake
 
 class Environment(_rows: Int, _columns: Int) {
-  private val _totalFoodOnThePlate:Int = 0
-  private val _maxFoodOnThePlate:Int = 1
+  private var _food: Option[(Int, Int)] = None
   private val _rand = new scala.util.Random
-  private val _foods: List[(Int, Int)] = List()
-  private val _snake: Snake = null
+  private var _snake = new Snake(this)
 
-  def foods: List[(Int, Int)] = _foods
   def rows: Int = _rows
   def columns: Int = _columns
   def snake: Snake = _snake
-  def totalFoodOnThePlate: Int = _totalFoodOnThePlate
+  def getPlacedFood: Option[(Int, Int)] = _food
 
-  def createFood(): Unit = {}
-  def isFood(place: (Int, Int)): Boolean = false
-  def addSnake(): Unit = {}
+  def addFood(): Unit = {
+    val place = (_rand.nextInt(Integer.MAX_VALUE) % rows, _rand.nextInt(Integer.MAX_VALUE) % columns)
+    addFood(place)
+  }
+
+  def addFood(place: (Int, Int)): Unit = {
+    if (_food.isEmpty) {
+      _food = Some(place)
+    }
+  }
+
+  def tryEatFood(place: (Int, Int)): Boolean = {
+    if (_food.isDefined && place == _food.get) {
+      _food = None
+      return true
+    }
+    false
+  }
 }

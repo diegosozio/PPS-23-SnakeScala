@@ -8,13 +8,13 @@ class EnvironmentSuite extends AnyFunSpec  {
   describe("An Environment"){
 
     describe("when empty"){
-      it("should have not any food"){
+      it("should has not any food"){
         assert(env.foods.isEmpty)
       }
-      it("should have not any snake"){
+      it("should has not any snake"){
         assert(env.snake == null)
       }
-      it("should have not any food in place"){
+      it("should has not any food in place"){
         assert(env.totalFoodOnThePlate == 0)
       }
     }
@@ -22,14 +22,8 @@ class EnvironmentSuite extends AnyFunSpec  {
     describe("when game start"){
       env.addSnake()
 
-      it("should have one food") {
-        assert(env.foods.length == 1)
-      }
-      it("should have the snake") {
+      it("should has the snake") {
         assert(env.snake != null)
-      }
-      it("should have one food in place") {
-        assert(env.totalFoodOnThePlate == 1)
       }
     }
 

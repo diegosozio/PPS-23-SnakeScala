@@ -8,7 +8,7 @@ class Environment(_rows: Int, _columns: Int) {
   def rows: Int = _rows
   def columns: Int = _columns
   def snake: Snake = _snake
-  def getPlacedFood: Option[(Int, Int)] = _food
+  def placedFood: Option[(Int, Int)] = _food
 
   def addFood(): Unit = {
     val place = (_rand.nextInt(Integer.MAX_VALUE) % rows, _rand.nextInt(Integer.MAX_VALUE) % columns)

@@ -3,7 +3,6 @@ package snake
 import org.scalatest.funspec.AnyFunSpec
 
 class SnakeSuite extends AnyFunSpec {
-  val changeDirectionTest: (Int, Int) = (1,0)
   val env: Environment = new Environment(20, 20)
   var snake:Snake = new Snake(env)
   var initialHeadPosition: (Int, Int) = snake.body.head
@@ -38,11 +37,11 @@ class SnakeSuite extends AnyFunSpec {
           moveDone = snake.move()
           i = i + 1
         }
-        snake.changeDirection(snake.directionRight)
+        snake.goRight()
         moveDone = snake.move()
-        snake.changeDirection(snake.directionUp)
+        snake.goUp()
         moveDone = snake.move()
-        snake.changeDirection(snake.directionLeft)
+        snake.goLeft()
         moveDone = snake.move()
         assert(!moveDone)
       }
@@ -60,7 +59,7 @@ class SnakeSuite extends AnyFunSpec {
       it("should die if it hit the right wall") {
         var moveDone: Boolean = true
         var i = 0
-        snake.changeDirection(snake.directionLeft)
+        snake.goLeft()
 
         while (moveDone && i < env.rows && i < env.columns) {
           moveDone = snake.move()
@@ -72,7 +71,7 @@ class SnakeSuite extends AnyFunSpec {
       it("should die if it hit the left wall") {
         var moveDone: Boolean = true
         var i = 0
-        snake.changeDirection(snake.directionRight)
+        snake.goRight()
 
         while (moveDone && i < env.rows && i < env.columns) {
           moveDone = snake.move()
@@ -84,9 +83,9 @@ class SnakeSuite extends AnyFunSpec {
       it("should die if it hit the back wall") {
         var moveDone: Boolean = true
         var i = 0
-        snake.changeDirection(snake.directionRight)
+        snake.goRight()
         moveDone = snake.move()
-        snake.changeDirection(snake.directionUp)
+        snake.goUp()
 
         while (moveDone && i < env.rows && i < env.columns) {
           moveDone = snake.move()
@@ -110,9 +109,62 @@ class SnakeSuite extends AnyFunSpec {
 
     describe("when it is requested to change direction"){
       it("should change direction"){
-        snake.changeDirection(changeDirectionTest)
+        //setup the snakes
+        snake.goDown()
+        snake.move()
 
-        assert(snake.direction == changeDirectionTest)
+        val snake2 = new Snake(env)
+        snake2.goDown()
+        snake2.move()
+
+        // change direction to the first snake
+        snake.goLeft()
+        snake.move()
+
+        // don't change direction to the second one
+        snake2.move()
+
+        assert(snake2.body.head != snake.body.head)
+      }
+
+      it("should not change direction if new direction is the opposite"){
+        snake = new Snake(env)
+        // TEST from DOWN to UP
+
+        //setup the snakes
+        snake.goDown()
+        snake.move()
+
+        val snake2 = new Snake(env)
+        snake2.goDown()
+        snake2.move()
+
+        // change direction to the first snake
+        snake.goUp()
+        snake.move()
+
+        // don't change direction to the second one
+        snake2.move()
+
+        assert(snake2.body.head == snake.body.head)
+
+        // TEST from LEFT to RIGHT
+
+        //setup the snakes
+        snake.goLeft()
+        snake.move()
+
+        snake2.goLeft()
+        snake2.move()
+
+        // change direction to the first snake
+        snake.goRight()
+        snake.move()
+
+        // don't change direction to the second one
+        snake2.move()
+
+        assert(snake2.body.head == snake.body.head)
       }
     }
   }

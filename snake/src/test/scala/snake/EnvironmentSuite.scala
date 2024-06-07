@@ -9,7 +9,7 @@ class EnvironmentSuite extends AnyFunSpec  {
     describe("when empty"){
       it("should has not any food"){
         env = new Environment(20, 20)
-        assert(env.getPlacedFood.isEmpty)
+        assert(env.placedFood.isEmpty)
       }
     }
 
@@ -17,7 +17,7 @@ class EnvironmentSuite extends AnyFunSpec  {
       it("should place food"){
         env = new Environment(20, 20)
         env.addFood()
-        assert(env.getPlacedFood.isDefined)
+        assert(env.placedFood.isDefined)
       }
     }
 
@@ -25,9 +25,9 @@ class EnvironmentSuite extends AnyFunSpec  {
       it("should not replace the food") {
         env = new Environment(20, 20)
         env.addFood()
-        val prevFood = env.getPlacedFood
+        val prevFood = env.placedFood
         env.addFood()
-        assert(env.getPlacedFood == prevFood)
+        assert(env.placedFood == prevFood)
       }
     }
 
@@ -36,8 +36,8 @@ class EnvironmentSuite extends AnyFunSpec  {
         it("should remove the food"){
           env = new Environment(20, 20)
           env.addFood()
-          env.tryEatFood(env.getPlacedFood.get)
-          assert(env.getPlacedFood.isEmpty)
+          env.tryEatFood(env.placedFood.get)
+          assert(env.placedFood.isEmpty)
         }
       }
     }

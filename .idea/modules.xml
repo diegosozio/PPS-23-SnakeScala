@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PPS-23-SnakeScala.iml" filepath="$PROJECT_DIR$/.idea/PPS-23-SnakeScala.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/snake.iml" filepath="$PROJECT_DIR$/.idea/modules/snake.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/snake-gui.iml" filepath="$PROJECT_DIR$/.idea/modules/snake-gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/snake-gui/.idea/modules/snake-gui.snake-gui-build.iml" filepath="$PROJECT_DIR$/snake-gui/.idea/modules/snake-gui.snake-gui-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/snake/.idea/modules/snake.snake-build.iml" filepath="$PROJECT_DIR$/snake/.idea/modules/snake.snake-build.iml" />
+    </modules>
+  </component>
+</project>

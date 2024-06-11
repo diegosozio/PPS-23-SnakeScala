@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="linkedExternalProjectsSettings">
+      <SbtProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/snake" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/snake" />
+          </set>
+        </option>
+        <option name="sbtVersion" value="1.10.0" />
+      </SbtProjectSettings>
+      <SbtProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/snake-gui" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/snake-gui" />
+          </set>
+        </option>
+        <option name="sbtVersion" value="1.10.0" />
+      </SbtProjectSettings>
+    </option>
+  </component>
+</project>

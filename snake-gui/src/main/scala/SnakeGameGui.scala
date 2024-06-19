@@ -7,7 +7,7 @@ import snake._
 
 object SnakeGameGui extends SimpleSwingApplication {
   private val l: Int = 16
-  private val gridSize: Int = 20
+  private val gridSize: Int = 30
   private var environment = Environment(gridSize, gridSize)
   private var canMove: Boolean = false
   private var timeSnakeMove: Int = 300
@@ -194,11 +194,39 @@ object SnakeGameGui extends SimpleSwingApplication {
     val buttonPanel = new BoxPanel(Orientation.Vertical) {
       background = Color.white
       opaque = true
-      contents += statusLabel
-      contents += playPauseButton
-      contents += restartButton
-      contents += maxScoreLabel
+      preferredSize = new Dimension(200, 300) // Set your desired width and height here
+      minimumSize = new Dimension(200, 300)
+      maximumSize = new Dimension(200, 300)
+
+      contents += new BoxPanel(Orientation.Horizontal) {
+        contents += statusLabel
+        background = Color.white
+
+      }
+      contents += Swing.Glue
+
+      contents += new BoxPanel(Orientation.Horizontal) {
+        contents += playPauseButton
+        background = Color.white
+
+      }
+      contents += Swing.Glue
+
+      contents += new BoxPanel(Orientation.Horizontal) {
+        contents += restartButton
+        background = Color.white
+
+      }
+      contents += Swing.Glue
+
+      contents += new BoxPanel(Orientation.Horizontal) {
+        contents += maxScoreLabel
+        background = Color.white
+
+      }
+      contents += Swing.Glue
     }
+
 
     contents = new BorderPanel {
       layout(header) = BorderPanel.Position.North

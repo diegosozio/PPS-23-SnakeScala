@@ -1,4 +1,6 @@
 import java.awt.Color
+import scala.io.Source
+import java.io.PrintWriter
 import scala.swing._
 import scala.swing.event._
 import snake._
@@ -13,6 +15,7 @@ object SnakeGameGui extends SimpleSwingApplication {
   private var score: Int = 0
   private var isGameOver: Boolean = false
   private var isPaused: Boolean = true // Start with the game paused
+  private var maxScore: Int = loadMaxScore()
 
   def top: MainFrame = new MainFrame {
     title = "Snake Game"
@@ -42,7 +45,7 @@ object SnakeGameGui extends SimpleSwingApplication {
           } else {
             canMove = true
 
-            if (environment.snake.body.head == environment.placedFood.getOrElse((-1, -1))) {
+            if (environment.placedFood.isDefined && environment.snake.body.head == environment.placedFood.get) {
               score += 10
               header.text = s"Score: $score"
               header.repaint() // Update the label with the new score
@@ -60,7 +63,10 @@ object SnakeGameGui extends SimpleSwingApplication {
         }
       }
 
-      def createFood(): Unit = environment.addFood()
+      def createFood(): Unit = {
+        environment.addFood()
+        repaint()
+      }
 
       def placeSquare(g: Graphics2D, pos: (Int, Int)): Unit = g.fillRect(pos._1 * l, pos._2 * l, l, l)
 
@@ -70,6 +76,14 @@ object SnakeGameGui extends SimpleSwingApplication {
 
         statusLabel.text = "Game Over"
         statusLabel.repaint()
+
+        // Update max score if the current score is higher
+        if (score > maxScore) {
+          maxScore = score
+          saveMaxScore(maxScore)
+          maxScoreLabel.text = s"Max Score: $maxScore"
+          maxScoreLabel.repaint()
+        }
       }
 
       override def paintComponent(g: Graphics2D): Unit = {
@@ -114,6 +128,14 @@ object SnakeGameGui extends SimpleSwingApplication {
     }
 
     val statusLabel: Label = new Label("Game paused") {
+      preferredSize = new Dimension(gridSize * l, 30)
+      horizontalAlignment = Alignment.Center
+      verticalAlignment = Alignment.Center
+      background = Color.white
+      opaque = true
+    }
+
+    val maxScoreLabel: Label = new Label(s"Max Score: $maxScore") {
       preferredSize = new Dimension(gridSize * l, 30)
       horizontalAlignment = Alignment.Center
       verticalAlignment = Alignment.Center
@@ -170,15 +192,16 @@ object SnakeGameGui extends SimpleSwingApplication {
     }
 
     val buttonPanel = new BoxPanel(Orientation.Vertical) {
-      background = Color.lightGray
+      background = Color.white
       opaque = true
+      contents += statusLabel
       contents += playPauseButton
       contents += restartButton
+      contents += maxScoreLabel
     }
 
     contents = new BorderPanel {
       layout(header) = BorderPanel.Position.North
-      layout(statusLabel) = BorderPanel.Position.South
       layout(gamePanel) = BorderPanel.Position.Center
       layout(buttonPanel) = BorderPanel.Position.East
     }
@@ -192,5 +215,23 @@ object SnakeGameGui extends SimpleSwingApplication {
     }
 
     gamePanel.requestFocus() // Ensure gamePanel retains focus to capture key events
+
+  }
+
+  def loadMaxScore(): Int = {
+    try {
+      val source = Source.fromFile("maxScore.txt")
+      val maxScore = source.getLines().next().toInt
+      source.close()
+      maxScore
+    } catch {
+      case _: Exception => 0 // Default to 0 if file doesn't exist or there's an error
+    }
+  }
+
+  def saveMaxScore(maxScore: Int): Unit = {
+    val writer = new PrintWriter("maxScore.txt")
+    writer.println(maxScore)
+    writer.close()
   }
 }

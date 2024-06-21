@@ -1,29 +1,24 @@
 import java.awt.Color
-import scala.io.Source
-import java.io.PrintWriter
 import scala.swing._
 import scala.swing.event._
 import snake._
 
 object SnakeGameGui extends SimpleSwingApplication {
-  private val l: Int = 16
-  private val gridSize: Int = 30
-  private var environment = Environment(gridSize, gridSize)
-  private var canMove: Boolean = false
-  private var timeSnakeMove: Int = 300
-  private var timeSnakeMoveChanged: Boolean = false
-  private var score: Int = 0
-  private var foodPlace: Option[(Int, Int)] = None
-  private var isGameOver: Boolean = false
-  private var isPaused: Boolean = true // Start with the game paused
-  private var maxScore: Int = loadMaxScore()
+  private val _l: Int = 16
+  private val _gridSize: Int = 30
+  private var _environment = Environment(_gridSize, _gridSize)
+  private var _canMove: Boolean = false
+  private var _timeSnakeMove: Int = 300
+  private var _timeSnakeMoveChanged: Boolean = false
+  private var _isGameOver: Boolean = false
+  private var _isPaused: Boolean = true // Start with the game paused
 
   def top: MainFrame = new MainFrame {
     title = "Snake Game"
-    object gamePanel extends GridPanel(gridSize, gridSize) {
-      preferredSize = new Dimension(gridSize * l, gridSize * l)
+    object gamePanel extends GridPanel(_gridSize, _gridSize) {
+      preferredSize = new Dimension(_gridSize * _l, _gridSize * _l)
 
-      val moveTimer = new javax.swing.Timer(timeSnakeMove, Swing.ActionListener(e => moveSnake()))
+      val moveTimer = new javax.swing.Timer(_timeSnakeMove, Swing.ActionListener(e => moveSnake()))
       val foodTimer = new javax.swing.Timer(5000, Swing.ActionListener(e => createFood()))
 
       def startTimers(): Unit = {
@@ -37,45 +32,38 @@ object SnakeGameGui extends SimpleSwingApplication {
       }
 
       def moveSnake(): Unit = {
-        if (!isGameOver) {
-          isGameOver = !environment.snake.move()
-          repaint()
+        if (!_isGameOver) {
+          _isGameOver = !_environment.moveSnake()
 
-          if (isGameOver) {
+          if (_isGameOver) {
             gameOver()
           } else {
-            canMove = true
+            repaint()
+            _canMove = true
+            header.text = s"Score: ${_environment.score}"
+            header.repaint() // Update the label with the new score
 
-            if (foodPlace.isDefined && environment.snake.body.head == foodPlace.get) {
-              // snake ate food
-              foodPlace = None
-              score += 10
-              header.text = s"Score: $score"
-              header.repaint() // Update the label with the new score
-            }
-
-            if (!timeSnakeMoveChanged && environment.snake.totalEatenFoods % 5 == 0) {
-              timeSnakeMove = timeSnakeMove - environment.snake.totalEatenFoods * 5
-              moveTimer.setDelay(timeSnakeMove)
-              timeSnakeMoveChanged = true
-            } else if (environment.snake.totalEatenFoods % 5 == 1) {
-              timeSnakeMoveChanged = false
+            if (!_timeSnakeMoveChanged && _environment.totalEatenFoods % 5 == 0) {
+              _timeSnakeMove = _timeSnakeMove - _environment.totalEatenFoods * 5
+              moveTimer.setDelay(_timeSnakeMove)
+              _timeSnakeMoveChanged = true
+            } else if (_environment.totalEatenFoods % 5 == 1) {
+              _timeSnakeMoveChanged = false
             }
           }
         }
       }
 
       def createFood(): Unit = {
-        environment.addFood()
-        foodPlace = environment.placedFood
+        _environment.addFood()
         repaint()
       }
 
-      def placeSquare(g: Graphics2D, pos: (Int, Int)): Unit = g.fillRect(pos._1 * l, pos._2 * l, l, l)
+      def placeSquare(g: Graphics2D, pos: (Int, Int)): Unit = g.fillRect(pos._1 * _l, pos._2 * _l, _l, _l)
 
       def gameOver(): Unit = {
         stopTimers()
-        canMove = false
+        _canMove = false
 
         statusLabel.text = "Game Over"
         statusLabel.repaint()
@@ -83,25 +71,20 @@ object SnakeGameGui extends SimpleSwingApplication {
         playPauseButton.text = "Play"
         playPauseButton.repaint()
 
-        // Update max score if the current score is higher
-        if (score > maxScore) {
-          maxScore = score
-          saveMaxScore(maxScore)
-          maxScoreLabel.text = s"Max Score: $maxScore"
-          maxScoreLabel.repaint()
-        }
+        maxScoreLabel.text = s"Max Score: ${_environment.maxScore}"
+        maxScoreLabel.repaint()
       }
 
       override def paintComponent(g: Graphics2D): Unit = {
         super.paintComponent(g)
 
-        if (foodPlace.isDefined) {
+        if (_environment.placedFood.isDefined) {
           g.setColor(Color.orange)
-          placeSquare(g, foodPlace.get)
+          placeSquare(g, _environment.placedFood.get)
         }
 
         g.setColor(Color.black)
-        for (pos <- environment.snake.body) {
+        for (pos <- _environment.snakeBody) {
           placeSquare(g, pos)
         }
       }
@@ -109,24 +92,24 @@ object SnakeGameGui extends SimpleSwingApplication {
       listenTo(keys)
       reactions += {
         case e: KeyPressed =>
-          if (canMove) {
-            if (e.key == Key.Up) environment.snake.goUp()
-            else if (e.key == Key.Down) environment.snake.goDown()
-            else if (e.key == Key.Left) environment.snake.goLeft()
-            else if (e.key == Key.Right) environment.snake.goRight()
-            canMove = false
+          if (_canMove) {
+            if (e.key == Key.Up) _environment.moveSnakeUp()
+            else if (e.key == Key.Down) _environment.moveSnakeDown()
+            else if (e.key == Key.Left) _environment.moveSnakeLeft()
+            else if (e.key == Key.Right) _environment.moveSnakeRight()
+            _canMove = false
           }
       }
 
-      canMove = true
+      _canMove = true
 
       focusable = true
       resizable = false
       requestFocus()
     }
 
-    val header: Label = new Label(s"Score: $score") {
-      preferredSize = new Dimension(gridSize * l, 30)
+    val header: Label = new Label(s"Score: ${_environment.score}") {
+      preferredSize = new Dimension(_gridSize * _l, 30)
       horizontalAlignment = Alignment.Center
       verticalAlignment = Alignment.Center
       background = Color.white
@@ -134,15 +117,15 @@ object SnakeGameGui extends SimpleSwingApplication {
     }
 
     val statusLabel: Label = new Label("Game paused") {
-      preferredSize = new Dimension(gridSize * l, 30)
+      preferredSize = new Dimension(_gridSize * _l, 30)
       horizontalAlignment = Alignment.Center
       verticalAlignment = Alignment.Center
       background = Color.white
       opaque = true
     }
 
-    val maxScoreLabel: Label = new Label(s"Max Score: $maxScore") {
-      preferredSize = new Dimension(gridSize * l, 30)
+    val maxScoreLabel: Label = new Label(s"Max Score: ${_environment.maxScore}") {
+      preferredSize = new Dimension(_gridSize * _l, 30)
       horizontalAlignment = Alignment.Center
       verticalAlignment = Alignment.Center
       background = Color.white
@@ -156,10 +139,10 @@ object SnakeGameGui extends SimpleSwingApplication {
       reactions += {
         case ButtonClicked(_) =>
 
-          if(isGameOver) {
+          if(_isGameOver) {
             restartGame()
           }else {
-            if (isPaused) {
+            if (_isPaused) {
               gamePanel.startTimers()
               text = "Pause"
               statusLabel.text = "Game in progress"
@@ -170,7 +153,7 @@ object SnakeGameGui extends SimpleSwingApplication {
             }
 
             statusLabel.repaint()
-            isPaused = !isPaused
+            _isPaused = !_isPaused
             gamePanel.requestFocus() // Ensure gamePanel retains focus to capture key events
           }
       }
@@ -186,23 +169,24 @@ object SnakeGameGui extends SimpleSwingApplication {
 
     def restartGame(): Unit = {
       gamePanel.stopTimers()
-      score = 0
-      header.text = s"Score: $score"
+
+      _environment = Environment(_gridSize, _gridSize) // Recreate the environment
+
+      header.text = s"Score: ${_environment.score}"
       header.repaint()
       statusLabel.text = "Game in progress"
       statusLabel.repaint()
-      isGameOver = false
-      isPaused = false
+      _isGameOver = false
+      _isPaused = false
       playPauseButton.text = "Pause"
 
-      environment = Environment(gridSize, gridSize) // Recreate the environment
-      canMove = true // Allow movement after restart
+      _canMove = true // Allow movement after restart
       gamePanel.requestFocus() // Ensure gamePanel retains focus to capture key events
       gamePanel.startTimers()
       gamePanel.repaint() // Ensure the gamePanel is repainted to reflect the new state
     }
 
-    val buttonPanel = new BoxPanel(Orientation.Vertical) {
+    val buttonPanel: BoxPanel = new BoxPanel(Orientation.Vertical) {
       background = Color.white
       opaque = true
       preferredSize = new Dimension(200, 300) // Set your desired width and height here
@@ -244,22 +228,5 @@ object SnakeGameGui extends SimpleSwingApplication {
       layout(buttonPanel) = BorderPanel.Position.East
     }
 
-  }
-
-  def loadMaxScore(): Int = {
-    try {
-      val source = Source.fromFile("maxScore.txt")
-      val maxScore = source.getLines().next().toInt
-      source.close()
-      maxScore
-    } catch {
-      case _: Exception => 0 // Default to 0 if file doesn't exist or there's an error
-    }
-  }
-
-  def saveMaxScore(maxScore: Int): Unit = {
-    val writer = new PrintWriter("maxScore.txt")
-    writer.println(maxScore)
-    writer.close()
   }
 }

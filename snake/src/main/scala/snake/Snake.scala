@@ -1,66 +1,63 @@
 package snake
 
 private class Snake(_env: Environment) {
-  private val directionRight: (Int, Int) = (1,0)
-  private val directionLeft: (Int, Int) = (-1,0)
-  private val directionDown: (Int, Int) = (0,1)
-  private val directionUp: (Int, Int) = (0,-1)
+  private val _directionRight: (Int, Int) = (1,0)
+  private val _directionLeft: (Int, Int) = (-1,0)
+  private val _directionDown: (Int, Int) = (0,1)
+  private val _directionUp: (Int, Int) = (0,-1)
 
   private var _isAlive: Boolean = true
   private var _totalEatenFoods: Int = 0
   private var _body: List[(Int, Int)] = List((3, 5), (3, 4), (3, 3))
-  private var _direction: (Int, Int) = directionDown
+  private var _direction: (Int, Int) = _directionDown
 
   def body: List[(Int, Int)] = _body
   def direction: (Int, Int) = _direction
   def totalEatenFoods:Int = _totalEatenFoods
 
   private def changeDirection(newDir: (Int, Int)): Unit = {
-    if(newDir == directionUp && _direction != directionDown
+    if(newDir == _directionUp && _direction != _directionDown
       ||
-      newDir == directionDown && _direction != directionUp
+      newDir == _directionDown && _direction != _directionUp
       ||
-      newDir == directionLeft && _direction != directionRight
+      newDir == _directionLeft && _direction != _directionRight
       ||
-      newDir == directionRight && _direction != directionLeft) {
+      newDir == _directionRight && _direction != _directionLeft) {
       _direction = newDir
     }
   }
 
-  def goUp(): Unit = changeDirection(directionUp)
+  def goUp(): Unit = changeDirection(_directionUp)
 
-  def goDown(): Unit  = changeDirection(directionDown)
+  def goDown(): Unit  = changeDirection(_directionDown)
 
-  def goLeft(): Unit  = changeDirection(directionLeft)
+  def goLeft(): Unit  = changeDirection(_directionLeft)
 
-  def goRight(): Unit  = changeDirection(directionRight)
+  def goRight(): Unit  = changeDirection(_directionRight)
 
   def move(): Boolean = {
-    if !_isAlive then return false
+    if (_isAlive) {
 
-    var gameOver: Boolean = false
+      // Calculate new head position with direction
+      val newHead = (
+        _body.head._1 + direction._1,
+        _body.head._2 + direction._2
+      )
 
-    // Calcola la nuova testa in base alla direzione corrente
-    val newHead = (
-      (_body.head._1 + direction._1),
-      (_body.head._2 + direction._2)
-    )
+      if (_env.tryEatFood(newHead)) {
+        // Add the head but doesn't remove the tail cause it ate
+        _body = newHead +: _body
+        _totalEatenFoods = _totalEatenFoods + 1
+      } else {
+        // Add the head and remove the tail
+        _body = newHead +: _body.init
+      }
 
-    if (_env.tryEatFood(newHead)) {
-      // Aggiunge la nuova testa e non rimuove la coda perché ha mangiato
-      _body = newHead +: _body
-      _totalEatenFoods = _totalEatenFoods + 1
-    } else {
-      // Aggiunge la nuova testa e rimuove la coda
-      _body = newHead +: _body.init
+      if (_body.distinct.length != _body.length || // hit body
+        (newHead._1 == _env.rows || newHead._2 == _env.columns || newHead._1 == -1 || newHead._2 == -1)) { // hit wall
+        _isAlive = false
+      }
     }
-
-    if (_body.distinct.length != _body.length || // hit body
-      (newHead._1 == _env.rows || newHead._2 == _env.columns || newHead._1 == -1 || newHead._2 == -1)) { // hit wall
-      gameOver = true
-      _isAlive = false
-    }
-
-    !gameOver
+    _isAlive
   }
 }

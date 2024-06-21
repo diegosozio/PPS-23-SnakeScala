@@ -45,9 +45,9 @@ Per il Sistema:
 
 ### Implementazione
 - Utilizzo di:
-    - Scala 3.3.0
+    - Scala 3.3.3 lts 
     - ScalaTest 3.3.x
-    - JDK 21
+    - JDK 22
 
 ### Requisiti Opzionali
 - **Punteggi e Classifiche:** fornire un sistema per tenere traccia dei punteggi più alti e mostrare una classifica.

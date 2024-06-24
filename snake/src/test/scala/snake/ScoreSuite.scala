@@ -5,15 +5,11 @@ import org.scalatest.BeforeAndAfter
 import java.io.File
 
 class ScoreSuite extends AnyFunSpec with BeforeAndAfter {
-
-  val scoreFileName = "maxScore.txt"
+  private val _scoreFilename: String = "maxScore.txt"
 
   before {
     // Ensure the score file does not exist before each test
-    val file = new File(scoreFileName)
-    if (file.exists()) {
-      file.delete()
-    }
+    new Score().deleteMaxScore()
   }
 
   describe("Score") {
@@ -73,10 +69,10 @@ class ScoreSuite extends AnyFunSpec with BeforeAndAfter {
       score.Inc(15)
       score.updateMaxScore()
 
-      val file = new File(scoreFileName)
+      val file = new File(_scoreFilename)
       assert(file.exists())
 
-      val source = scala.io.Source.fromFile(scoreFileName)
+      val source = scala.io.Source.fromFile(_scoreFilename)
       val maxScoreFromFile = source.getLines().next().toInt
       source.close()
 
@@ -86,9 +82,6 @@ class ScoreSuite extends AnyFunSpec with BeforeAndAfter {
 
   after {
     // Clean up: Delete the score file after each test
-    val file = new File(scoreFileName)
-    if (file.exists()) {
-      file.delete()
-    }
+    new Score().deleteMaxScore()
   }
 }

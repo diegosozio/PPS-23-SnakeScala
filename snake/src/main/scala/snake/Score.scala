@@ -1,6 +1,6 @@
 package snake
 
-import java.io.PrintWriter
+import java.io.{File, PrintWriter}
 import scala.io.Source
 
 class Score {
@@ -23,9 +23,9 @@ class Score {
     }
   }
 
-  private def saveMaxScore(): Unit = {
+  private def saveMaxScore(value: Int): Unit = {
     val writer = new PrintWriter(_scoreFilename)
-    writer.println(_maxScore)
+    writer.println(value)
     writer.close()
   }
 
@@ -36,7 +36,14 @@ class Score {
   def updateMaxScore(): Unit = {
     if (score > maxScore) {
       _maxScore = _score
-      saveMaxScore()
+      saveMaxScore(_maxScore)
+    }
+  }
+
+  def deleteMaxScore(): Unit = {
+    val file = new File(_scoreFilename)
+    if (file.exists()) {
+      file.delete()
     }
   }
 }

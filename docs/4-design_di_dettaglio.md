@@ -54,7 +54,6 @@ Gestisce il punteggio del gioco.
 
 Ecco il diagramma delle classi del package `model`:
 
-```plaintext
 +-----------------+
 |  Environment    |
 +-----------------+
@@ -109,6 +108,7 @@ Ecco il diagramma delle classi del package `model`:
 | + Inc(points: Int): Unit  |
 | + updateMaxScore(): Unit  |
 +-----------------+
+
 
 
 ## Controller

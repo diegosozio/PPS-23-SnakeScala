@@ -1,4 +1,4 @@
-#Implementazione
+# Implementazione
 
 In questo capitolo vengono descritte le scelte implementative adottate per la realizzazione del progetto. In particolare, si analizzano le tecnologie impiegate, la suddivisione del lavoro e le decisioni progettuali prese.
 

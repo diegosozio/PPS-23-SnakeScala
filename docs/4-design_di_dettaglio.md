@@ -6,8 +6,110 @@ seguono: `model`, `controller` e `view`.
 
 ## Model
 
-Questo package contiene le classi che rappresentano le entità del gioco SnakeScala, le quali rispecchiano il modello di
-dominio definito in fase di raccolta dei requisiti.
+Questo package contiene le classi che rappresentano le entità del gioco Snake, rispecchiando il modello di dominio definito in fase di raccolta dei requisiti.
+
+Ogni entità è definita attraverso classi regolari, con attributi e operazioni che gestiscono lo stato e il comportamento del gioco. Di seguito, la descrizione dettagliata delle classi presenti nel package `model`, visionabili anche nel diagramma sottostante:
+
+### Environment
+Rappresenta l'ambiente di gioco in cui il serpente si muove e interagisce con il cibo. È caratterizzato da:
+- **rows** - numero di righe della griglia.
+- **columns** - numero di colonne della griglia.
+- **scorePerFoodUnit** - punteggio assegnato per ogni unità di cibo consumata.
+- **_food** - posizione attuale del cibo nella griglia, se presente.
+- **_rand** - generatore di numeri casuali per posizionare il cibo.
+- **_snake** - istanza della classe Snake che rappresenta il serpente.
+- **_score** - istanza della classe Score che gestisce il punteggio.
+  
+#### Metodi Principali:
+- `addFood()`: aggiunge cibo in una posizione casuale della griglia.
+- `addFood(place: (Int, Int))`: aggiunge cibo nella posizione specificata.
+- `tryEatFood(place: (Int, Int))`: verifica se il serpente ha mangiato il cibo.
+- `moveSnake()`: muove il serpente e ritorna `true` se il serpente è vivo, `false` altrimenti.
+- Metodi per muovere il serpente nelle quattro direzioni (su, giù, sinistra, destra).
+
+### Snake
+Rappresenta il serpente che si muove all'interno dell'ambiente di gioco.
+
+#### Attributi Principali:
+- **body** - lista delle coordinate che costituiscono il corpo del serpente.
+- **direction** - direzione corrente del movimento del serpente.
+- **environment** - riferimento all'ambiente di gioco.
+
+#### Metodi Principali:
+- `move()`: aggiorna la posizione del serpente.
+- Metodi per cambiare la direzione del serpente (goUp, goDown, goLeft, goRight).
+
+### Score
+Gestisce il punteggio del gioco.
+
+#### Attributi Principali:
+- **score** - punteggio corrente.
+- **maxScore** - punteggio massimo raggiunto.
+
+#### Metodi Principali:
+- `Inc(points: Int)`: incrementa il punteggio corrente di un certo numero di punti.
+- `updateMaxScore()`: aggiorna il punteggio massimo se il punteggio corrente è superiore.
+
+### Diagramma delle Classi
+
+Ecco il diagramma delle classi del package `model`:
+
+```plaintext
++-----------------+
+|  Environment    |
++-----------------+
+| - scorePerFoodUnit: Int      |
+| - _food: Option[(Int, Int)]  |
+| - _rand: Random              |
+| - _snake: Snake              |
+| - _score: Score              |
+|-------------------------------|
+| + rows: Int                  |
+| + columns: Int               |
+| + placedFood: Option[(Int, Int)] |
+| + score: Int                 |
+| + maxScore: Int              |
+| + totalEatenFoods: Int       |
+| + snakeBody: List[(Int, Int)]|
+|-------------------------------|
+| + addFood(): Unit            |
+| + addFood(place: (Int, Int)): Unit |
+| + tryEatFood(place: (Int, Int)): Boolean |
+| + moveSnake(): Boolean       |
+| + moveSnakeUp(): Unit        |
+| + moveSnakeDown(): Unit      |
+| + moveSnakeLeft(): Unit      |
+| + moveSnakeRight(): Unit     |
++-----------------+
+
++-----------------+
+|     Snake       |
++-----------------+
+| - body: List[(Int, Int)]     |
+| - direction: (Int, Int)      |
+| - environment: Environment   |
+|-------------------------------|
+| + totalEatenFoods: Int       |
+| + move(): Boolean            |
+| + goUp(): Unit               |
+| + goDown(): Unit             |
+| + goLeft(): Unit             |
+| + goRight(): Unit            |
++-----------------+
+
++-----------------+
+|     Score       |
++-----------------+
+| - score: Int              |
+| - maxScore: Int           |
+|----------------------------|
+| + score: Int              |
+| + maxScore: Int           |
+|----------------------------|
+| + Inc(points: Int): Unit  |
+| + updateMaxScore(): Unit  |
++-----------------+
+
 
 ## Controller
 

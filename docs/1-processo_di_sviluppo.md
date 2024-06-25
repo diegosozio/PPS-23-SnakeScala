@@ -123,3 +123,5 @@ GitHub Actions è una piattaforma di automazione integrata direttamente in GitHu
 ### Documentazione
 
 Per quanto riguarda la documentazione del progetto è stata costruita una pagina web navigabile
+
+Lo sprint backlog di questo progetto è visionabile [qui](sprint-backlog.md).

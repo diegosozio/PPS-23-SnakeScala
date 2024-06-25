@@ -50,6 +50,21 @@ Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine
 | 10 | Gestione degli input dell'utente per il controllo del serpente | 3h |
 | **Totale** | | **30h** |
 
+**Retrospettiva del Progetto:**
+
+#### Cosa ha funzionato bene:
+- **Creazione del repository su GitHub e configurazione di GitFlow:** Completata in modo efficiente e conforme alle aspettative in meno tempo del previsto.
+- **Implementazione delle classi base (Score, Snake):** Sono state completate con successo e senza ritardi significativi.
+
+#### Cosa potremmo migliorare:
+- **Gestione del tempo:** Alcune attività, come l'implementazione del movimento del serpente, hanno richiesto più tempo del previsto a causa di sfide tecniche impreviste.
+- **Pianificazione delle attività:** Alcuni task, come la gestione degli input dell'utente, potrebbero essere stati sottovalutati in termini di complessità.
+
+#### Azioni correttive:
+- Migliorare la stima delle attività future considerando le complessità tecniche.
+- Incrementare la collaborazione durante la risoluzione di problemi per ridurre i tempi di blocco.
+
+
 ### Sprint 2 (29 maggio 2024 - 11 giugno 2024)
 
 | ID | Descrizione | Stima Oraria |
@@ -62,6 +77,20 @@ Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine
 | 16 | Scrittura della documentazione del codice | 4h |
 | **Totale** | | **23h** |
 
+**Retrospettiva del Progetto:**
+
+#### Cosa ha funzionato bene:
+- **Implementazione della vista del gioco (SnakeGameGui):** Completata in tempo e soddisfacente per quanto riguarda le specifiche richieste.
+- **Testing unitario delle classi core:** Ha rivelato pochi bug significativi, il che denota una buona qualità del codice base.
+
+#### Cosa potremmo migliorare:
+- **Gestione dello stato del gioco e salvataggio del punteggio:** Queste funzionalità potrebbero essere state più integrate e testate prima.
+
+#### Azioni correttive:
+- Pianificare sessioni di revisione del codice più frequenti per identificare e risolvere le problematiche prima delle fasi finali.
+- Incrementare il coinvolgimento del team durante il processo di integrazione per ridurre il rischio di bug dell'ultimo minuto.
+
+
 ### Sprint 3 (12 giugno 2024 - 25 giugno 2024)
 
 | ID | Descrizione | Stima Oraria |
@@ -73,4 +102,17 @@ Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine
 | 21 | Implementazione del Test Driven Development (TDD) | 6h |
 | 22 | Verifica e validazione del sistema completo | 5h |
 | **Totale** | | **29h** |
+
+**Retrospettiva del Progetto:**
+
+#### Cosa ha funzionato bene:
+- **Implementazione del Test Driven Development (TDD):** Ha contribuito a migliorare la qualità del codice e a ridurre i bug.
+- **Configurazione di Continuous Integration (CI) con GitHub Actions:** Ha facilitato l'integrazione continua e il rilevamento tempestivo di errori.
+
+#### Cosa potremmo migliorare:
+- **Preparazione della relazione finale e della documentazione:** Richiedeva più tempo del previsto per essere completata in modo esaustivo.
+
+#### Azioni correttive:
+- Pianificare attività di documentazione e preparazione della relazione più realisticamente nei prossimi sprint.
+- Assicurarsi di rispettare i tempi stabiliti per le cerimonie Scrum per migliorare la comunicazione e la pianificazione.
 

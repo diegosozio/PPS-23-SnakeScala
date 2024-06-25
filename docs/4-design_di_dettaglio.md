@@ -4,7 +4,7 @@ Questo capitolo illustra nel dettaglio il design del sistema SnakeScala. Il sist
 seguono: `model`, `controller` e `view`.
 
 
-## Model
+# Model
 
 Questo package contiene le classi che rappresentano le entità del gioco Snake, rispecchiando il modello di dominio definito in fase di raccolta dei requisiti.
 
@@ -104,15 +104,9 @@ Ecco il diagramma delle classi del package `model`:
 
 
 
-## Controller
 
-In questo package sono presenti le classi che si occupano di gestire le interazioni tra l'utente e il sistema, in modo
-da garantire la corretta esecuzione delle operazioni richieste.
 
-Nel rispetto del pattern architetturale MVC, i controller sono stati progettati per reagire alle interazioni dell'utente
-con l'interfaccia grafica, per poi richiamare le opportune funzioni della logica di business.
-
-## View
+# View
 
 In questo package sono presenti le classi che si occupano di costruire e gestire l'interfaccia utente del gioco Snake, in modo da garantire una corretta visualizzazione del gioco e delle informazioni. Queste classi sono progettate per reagire alle interazioni dell'utente con la GUI, richiamando le opportune funzioni dei controller per aggiornare lo stato del gioco.
 
@@ -155,3 +149,55 @@ Il `ButtonPanel` è un componente verticale che contiene i pulsanti e le etichet
 - **Aggiornamento del Punteggio**: Il punteggio viene aggiornato ogni volta che il serpente mangia il cibo. L'etichetta del punteggio viene aggiornata di conseguenza.
 
 Questo design permette di realizzare un'interfaccia utente chiara e reattiva per il gioco Snake, garantendo una buona esperienza utente e facilitando la gestione dello stato del gioco tramite l'interazione con i componenti grafici.
+
+# Controller
+In questo package sono presenti le classi che si occupano di gestire le interazioni tra l'utente e il sistema, in modo da garantire la corretta esecuzione delle operazioni richieste.
+
+Nel rispetto del pattern architetturale MVC, i controller sono stati progettati per reagire alle interazioni dell'utente con l'interfaccia grafica, per poi richiamare le opportune funzioni della logica di business.
+
+I controllers relativi al gioco del serpente presentano una struttura ben precisa. Queste classi sono rappresentate da oggetti o classi che gestiscono specifiche operazioni del gioco, come il punteggio e il movimento del serpente.
+
+Di seguito, vengono descritti i controllers presenti in questo package:
+
+## Score
+La classe `Score` si occupa di gestire tutte le azioni relative al punteggio del gioco. In particolare, implementa la logica necessaria per mantenere e aggiornare il punteggio corrente e il punteggio massimo ottenuto.
+
+### Attributi:
+- `_scoreFilename: String`: nome del file in cui è memorizzato il punteggio massimo.
+- `_score: Int`: punteggio corrente.
+- `_maxScore: Int`: punteggio massimo ottenuto.
+
+### Metodi:
+- `score: Int`: restituisce il punteggio corrente.
+- `maxScore: Int`: restituisce il punteggio massimo.
+- `resetScore(): Unit`: resetta il punteggio corrente a 0.
+- `loadMaxScore(): Unit`: carica il punteggio massimo dal file.
+- `saveMaxScore(value: Int): Unit`: salva il punteggio massimo nel file.
+- `Inc(unit: Int): Unit`: incrementa il punteggio corrente.
+- `updateMaxScore(): Unit`: aggiorna il punteggio massimo se il punteggio corrente è superiore.
+- `deleteMaxScore(): Unit`: elimina il file che contiene il punteggio massimo.
+
+## Snake
+La classe `Snake` gestisce il movimento e lo stato del serpente nel gioco. È responsabile del cambio di direzione, del movimento del serpente, e della verifica delle collisioni con il cibo e i bordi dell'ambiente di gioco.
+
+### Attributi:
+- `_directionRight: (Int, Int)`: direzione destra.
+- `_directionLeft: (Int, Int)`: direzione sinistra.
+- `_directionDown: (Int, Int)`: direzione giù.
+- `_directionUp: (Int, Int)`: direzione su.
+- `_isAlive: Boolean`: stato del serpente (vivo o morto).
+- `_totalEatenFoods: Int`: numero totale di cibi mangiati.
+- `_body: List[(Int, Int)]`: corpo del serpente.
+- `_direction: (Int, Int)`: direzione corrente del serpente.
+
+### Metodi:
+- `body: List[(Int, Int)]`: restituisce il corpo del serpente.
+- `direction: (Int, Int)`: restituisce la direzione corrente del serpente.
+- `totalEatenFoods: Int`: restituisce il numero totale di cibi mangiati.
+- `changeDirection(newDir: (Int, Int)): Unit`: cambia la direzione del serpente.
+- `goUp(): Unit`: cambia la direzione del serpente verso l'alto.
+- `goDown(): Unit`: cambia la direzione del serpente verso il basso.
+- `goLeft(): Unit`: cambia la direzione del serpente verso sinistra.
+- `goRight(): Unit`: cambia la direzione del serpente verso destra.
+- `move(): Boolean`: muove il serpente nella direzione corrente e verifica le collisioni. Restituisce `true` se il serpente è vivo, altrimenti `false`.
+

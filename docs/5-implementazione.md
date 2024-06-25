@@ -22,5 +22,9 @@ Nonostante la forte collaborazione, è possibile identificare alcune aree in cui
 
 Possiamo comunque identificare aree di impatto del singolo componente del team: 
 
+Sozio Diego [qui](contributions/Sozio.md).
+Venturi Matteo [qui](contributions/Venturi.md).
+
+
 
 

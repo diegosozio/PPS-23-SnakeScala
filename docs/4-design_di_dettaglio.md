@@ -54,9 +54,8 @@ Gestisce il punteggio del gioco.
 
 Ecco il diagramma delle classi del package `model`:
 
-+-----------------+
 |  Environment    |
-+-----------------+
+|-----------------|
 | - scorePerFoodUnit: Int      |
 | - _food: Option[(Int, Int)]  |
 | - _rand: Random              |
@@ -79,35 +78,29 @@ Ecco il diagramma delle classi del package `model`:
 | + moveSnakeDown(): Unit      |
 | + moveSnakeLeft(): Unit      |
 | + moveSnakeRight(): Unit     |
-+-----------------+
 
-+-----------------+
+
 |     Snake       |
-+-----------------+
+|-----------------|
 | - body: List[(Int, Int)]     |
 | - direction: (Int, Int)      |
 | - environment: Environment   |
-|-------------------------------|
 | + totalEatenFoods: Int       |
 | + move(): Boolean            |
 | + goUp(): Unit               |
 | + goDown(): Unit             |
 | + goLeft(): Unit             |
 | + goRight(): Unit            |
-+-----------------+
 
-+-----------------+
 |     Score       |
-+-----------------+
+|-----------------|
 | - score: Int              |
 | - maxScore: Int           |
-|----------------------------|
 | + score: Int              |
 | + maxScore: Int           |
-|----------------------------|
 | + Inc(points: Int): Unit  |
 | + updateMaxScore(): Unit  |
-+-----------------+
+
 
 
 

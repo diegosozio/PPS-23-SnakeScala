@@ -19,6 +19,44 @@ con l'interfaccia grafica, per poi richiamare le opportune funzioni della logica
 
 ## View
 
-In questo package sono presenti le classi che si occupano di costruire e gestire l'interfaccia utente, in modo da
-garantire una corretta visualizzazione delle pagine e delle informazioni. In particolare, tali classi sono state
-progettate per reagire alle interazioni dell'utente con la GUI, per poi richiamare le opportune funzioni dei controller.
+In questo package sono presenti le classi che si occupano di costruire e gestire l'interfaccia utente del gioco Snake, in modo da garantire una corretta visualizzazione del gioco e delle informazioni. Queste classi sono progettate per reagire alle interazioni dell'utente con la GUI, richiamando le opportune funzioni dei controller per aggiornare lo stato del gioco.
+
+Sono stati previsti diversi componenti principali per organizzare in maniera più ordinata i vari elementi che compongono la View:
+
+### MainFrame
+
+La classe principale `SnakeGameGui` estende `SimpleSwingApplication` e rappresenta il frame principale dell'applicazione. Al suo interno sono definiti vari componenti grafici e logiche di gestione del gioco:
+
+- **Header**: Un'etichetta che visualizza il punteggio corrente del gioco.
+- **Status Label**: Un'etichetta che mostra lo stato attuale del gioco, come "Game paused" o "Game Over".
+- **Max Score Label**: Un'etichetta che visualizza il punteggio massimo raggiunto.
+- **Play/Pause Button**: Un pulsante per avviare o mettere in pausa il gioco. Aggiorna lo stato del gioco e l'etichetta di stato.
+- **Restart Button**: Un pulsante per riavviare il gioco. Resetta l'ambiente di gioco e riavvia i timer.
+
+### Components
+
+#### GamePanel
+
+Il `GamePanel` è un componente chiave che estende `GridPanel`. Gestisce la logica di disegno e aggiornamento della griglia di gioco:
+
+- **Movimento del Serpente**: Utilizza un `Timer` per gestire il movimento del serpente. Il serpente si muove automaticamente a intervalli regolari, e il movimento viene aggiornato basato sugli input dell'utente.
+- **Generazione del Cibo**: Un altro `Timer` gestisce la generazione periodica del cibo nella griglia.
+- **Disegno del Gioco**: Il metodo `paintComponent` è sovrascritto per disegnare il serpente e il cibo sulla griglia di gioco.
+- **Gestione Input**: Il pannello ascolta gli eventi della tastiera per muovere il serpente in diverse direzioni (su, giù, sinistra, destra).
+
+#### ButtonPanel
+
+Il `ButtonPanel` è un componente verticale che contiene i pulsanti e le etichette di stato del gioco:
+
+- **Status Label**: Visualizza lo stato attuale del gioco (in pausa, in corso, finito).
+- **Play/Pause Button**: Permette di avviare e mettere in pausa il gioco. Aggiorna lo stato del gioco e l'etichetta di stato.
+- **Restart Button**: Riavvia il gioco resettando l'ambiente e riavviando i timer.
+- **Max Score Label**: Visualizza il punteggio massimo raggiunto durante il gioco.
+
+### Logiche di Gioco
+
+- **Gestione Stato del Gioco**: Il gioco inizia in stato di pausa. I pulsanti di play/pausa e riavvio permettono di gestire lo stato del gioco e i timer associati.
+- **Movimento del Serpente e Collisioni**: La logica del movimento del serpente è gestita dal timer `moveTimer`. Se il serpente si muove senza collisioni, il gioco continua; altrimenti, lo stato viene aggiornato a "Game Over".
+- **Aggiornamento del Punteggio**: Il punteggio viene aggiornato ogni volta che il serpente mangia il cibo. L'etichetta del punteggio viene aggiornata di conseguenza.
+
+Questo design permette di realizzare un'interfaccia utente chiara e reattiva per il gioco Snake, garantendo una buona esperienza utente e facilitando la gestione dello stato del gioco tramite l'interazione con i componenti grafici.

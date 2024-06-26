@@ -10,7 +10,7 @@ Per la realizzazione del dominio, è stato preso come riferimento il gioco arcad
 
 ### Campo di Gioco
 
-La mappa di gioco è composta da una griglia rettangolare di celle, ognuna delle quali rappresenta una posizione nel terreno di gioco. Il serpente si muove all'interno di questa griglia, cercando cibo e evitando collisioni con se stesso e con i bordi della griglia.
+La mappa di gioco è costituita da una griglia rettangolare di celle, ognuna delle quali rappresenta una posizione sul terreno di gioco. Alla destra della griglia si trova una colonna dedicata ai pulsanti di azione e alle etichette di stato del gioco, con cui è possibile interagire. Nell'header è presente un contatore che mostra il punteggio raggiunto durante il gioco. Il serpente si muove all'interno di questa griglia, cercando cibo e evitando collisioni con se stesso e con i bordi della griglia.
 
 ![Campo di Gioco](img/campodagioco.png)
 
@@ -46,7 +46,7 @@ Per il Sistema:
 ### Implementazione
 - Utilizzo di:
     - Scala 3.3.3 lts 
-    - ScalaTest 3.3.x
+    - ScalaTest 3.2.18
     - JDK 22
 
 ### Requisiti Opzionali

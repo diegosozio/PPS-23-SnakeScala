@@ -8,4 +8,4 @@
 6. [Implementazione](5-implementazione.md)
 7. [Conclusioni](6-conclusioni.md)
 
-I backlog prodotti durante gli sprint sono visualizzabili [qui](sprint-backlog.md).
+I backlog prodotti durante gli sprint sono visualizzabili [qui](process/sprint-backlog.md).

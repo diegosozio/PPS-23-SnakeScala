@@ -86,7 +86,7 @@ Per garantire la correttezza delle funzionalità sviluppate, è stato adottato l
 
 ### Building
 
-Ho scelto SBT perché è uno strumento versatile e potente per la gestione dei progetti Scala. Offre una serie di vantaggi, tra cui:
+Abbiamo deciso di adottare SBT perché è uno strumento versatile e potente per la gestione dei progetti Scala. Offre una serie di vantaggi, tra cui:
 
 - Gestione delle dipendenze semplificata.
 - Compilazione e test integrati.

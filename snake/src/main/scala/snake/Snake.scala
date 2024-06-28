@@ -11,10 +11,25 @@ private class Snake(_env: Environment) {
   private var _body: List[(Int, Int)] = List((3, 5), (3, 4), (3, 3))
   private var _direction: (Int, Int) = _directionDown
 
+  /**
+   * @return the snake body to draw
+   */
   def body: List[(Int, Int)] = _body
+
+  /**
+   * @return The last snake direction
+   */
   def direction: (Int, Int) = _direction
+
+  /**
+   * @return how many foods the snaked ate
+   */
   def totalEatenFoods:Int = _totalEatenFoods
 
+  /**
+   * Change the snake direction if the new direction is correct
+   * @param newDir to set
+   */
   private def changeDirection(newDir: (Int, Int)): Unit = {
     if(newDir == _directionUp && _direction != _directionDown
       ||
@@ -27,14 +42,30 @@ private class Snake(_env: Environment) {
     }
   }
 
+  /**
+   * Set teh snake direction to up
+   */
   def goUp(): Unit = changeDirection(_directionUp)
 
+  /**
+   * Set teh snake direction to down
+   */
   def goDown(): Unit  = changeDirection(_directionDown)
 
+  /**
+   * Set teh snake direction to left
+   */
   def goLeft(): Unit  = changeDirection(_directionLeft)
 
+  /**
+   * Set teh snake direction to right
+   */
   def goRight(): Unit  = changeDirection(_directionRight)
 
+  /**
+   * Let progress the snake modifying the body
+   * @return true if the snake is alive after the progressing
+   */
   def move(): Boolean = {
     if (_isAlive) {
 

@@ -7,4 +7,12 @@ lazy val root = (project in file("."))
     name := "snake-gui"
   )
 
+assembly / assemblyMergeStrategy := {
+  case "reference.conf" => MergeStrategy.concat
+  case PathList("META-INF", _@_*) => MergeStrategy.discard
+  case _ => MergeStrategy.first
+}
+
+assembly / mainClass := Some("SnakeGameGui")
+
 libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "3.0.0"

@@ -40,7 +40,7 @@ jobs:
       run: |
         sbt assembly
         mkdir -p artifact
-        cp target/scala-3.3.3/pps-23-snakescala-SNAPSHOT.jar artifact/
+        cp target/scala-3.3.3/*.jar artifact/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4.3.3

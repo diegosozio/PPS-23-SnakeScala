@@ -28,10 +28,6 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: 'sbt'
-
-    - name: Set up Scala 3.3.3
-      run: |
-        echo "scalaVersion := \"3.3.3\"" >> build.sbt
         
     - name: Run tests
       run: sbt test

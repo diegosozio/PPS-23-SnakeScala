@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "3.3.3"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "snake-gui"
+    name := "snake-project"
   )
 
 assembly / assemblyMergeStrategy := {
@@ -13,4 +13,4 @@ assembly / assemblyMergeStrategy := {
   case _ => MergeStrategy.first
 }
 
-libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "3.0.0"
+assembly / mainClass := Some("snage-gui.SnakeGameGui")

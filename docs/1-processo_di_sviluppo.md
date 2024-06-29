@@ -120,6 +120,8 @@ GitHub Actions è una piattaforma di automazione integrata direttamente in GitHu
 - **Integrazione con l'Ecosistema GitHub:** GitHub Actions si integra perfettamente con altre funzionalità di GitHub, come le notifiche, le issue e i commenti nelle pull request.
 - **Scalabilità e Flessibilità:** Puoi configurare flussi di lavoro complessi e scalabili con GitHub Actions, adattandoli alle esigenze del tuo progetto.
 
+Ad ogni push del codice, GitHub Actions testa il codice e genera il file JAR come artifact. Inoltre, ad ogni push di documentazione, viene generata la relativa pagina di relazione, assicurando che entrambi i componenti del progetto siano sempre aggiornati e pronti per la distribuzione. Questa funzionalità è stata implementata nel nostro sistema per garantire un flusso di lavoro continuo ed efficiente.
+
 ### Documentazione
 
 Per quanto riguarda la documentazione del progetto è stata costruita una pagina web navigabile

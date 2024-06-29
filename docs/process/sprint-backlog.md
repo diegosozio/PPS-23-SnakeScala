@@ -48,7 +48,7 @@ Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine
 | 10  | Generazione casuale della posizione del cibo                                 | 2h           |
 | **Totale** |                                                                        | **32h**      |
 
-**Retrospettiva del Progetto:**
+**Retrospettiva di Sprint:**
 
 #### Cosa ha funzionato bene:
 - **Creazione del repository su GitHub e configurazione di GitFlow:** Completata in modo efficiente e conforme alle aspettative in meno tempo del previsto.
@@ -74,7 +74,7 @@ Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine
 | 16  | Scrittura della documentazione del codice                                    | 4h           |
 | **Totale** |                                                                        | **23h**      |
 
-**Retrospettiva del Progetto:**
+**Retrospettiva di Sprint:**
 
 #### Cosa ha funzionato bene:
 - **Implementazione della vista del gioco (SnakeGameGui):** Completata in tempo e soddisfacente per quanto riguarda le specifiche richieste.
@@ -97,7 +97,7 @@ Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine
 | 20  | Verifica e validazione del sistema completo              | 5h           |
 | **Totale** |                                                          | **20h**      |
 
-**Retrospettiva del Progetto:**
+**Retrospettiva di Sprint:**
 
 #### Cosa ha funzionato bene:
 - **Implementazione del Test Driven Development (TDD):** Ha contribuito a migliorare la qualità del codice e a ridurre i bug.

@@ -6,8 +6,8 @@ Il processo di sviluppo adottato è ispirato a SCRUM, scelto in conformità alle
 
 Nella fase iniziale del processo, sono stati definiti i seguenti ruoli:
 
-1. **Sozio Diego**: Product Owner, responsabile di supervisionare l'andamento del progetto nonché del coordinamento del team di sviluppo.
-2. **Venturi Matteo**: Scrum Master, figura cruciale per garantire che il team Scrum lavori in modo efficace, seguendo i principi e le pratiche di Scrum.
+1. **Venturi Matteo**: Product Owner, responsabile di supervisionare l'andamento del progetto nonché del coordinamento del team di sviluppo.
+2. **Sozio Diego**: Scrum Master, figura cruciale per garantire che il team Scrum lavori in modo efficace, seguendo i principi e le pratiche di Scrum.
 
 ### Cerimonie
 

@@ -159,45 +159,39 @@ I controllers relativi al gioco del serpente presentano una struttura ben precis
 
 Di seguito, vengono descritti i controllers presenti in questo package:
 
-## Score
-La classe `Score` si occupa di gestire tutte le azioni relative al punteggio del gioco. In particolare, implementa la logica necessaria per mantenere e aggiornare il punteggio corrente e il punteggio massimo ottenuto.
+Il controller `Environment` gestisce la logica del gioco Snake, includendo la gestione del serpente, del cibo e del punteggio. Qui di seguito approfondiamo i dettagli del design implementativo per ciascuna componente del controller:
 
-### Attributi:
-- `_scoreFilename: String`: nome del file in cui è memorizzato il punteggio massimo.
-- `_score: Int`: punteggio corrente.
-- `_maxScore: Int`: punteggio massimo ottenuto.
+#### Struttura del Controller
 
-### Metodi:
-- `score: Int`: restituisce il punteggio corrente.
-- `maxScore: Int`: restituisce il punteggio massimo.
-- `resetScore(): Unit`: resetta il punteggio corrente a 0.
-- `loadMaxScore(): Unit`: carica il punteggio massimo dal file.
-- `saveMaxScore(value: Int): Unit`: salva il punteggio massimo nel file.
-- `Inc(unit: Int): Unit`: incrementa il punteggio corrente.
-- `updateMaxScore(): Unit`: aggiorna il punteggio massimo se il punteggio corrente è superiore.
-- `deleteMaxScore(): Unit`: elimina il file che contiene il punteggio massimo.
+Il controller `Environment` è progettato per mantenere lo stato e la logica del gioco Snake. Ecco una panoramica dei componenti principali:
 
-## Snake
-La classe `Snake` gestisce il movimento e lo stato del serpente nel gioco. È responsabile del cambio di direzione, del movimento del serpente, e della verifica delle collisioni con il cibo e i bordi dell'ambiente di gioco.
+- **Variabili di Stato**:
+  - `_rows` e `_columns`: Rappresentano il numero di righe e colonne della griglia di gioco.
+  - `_food`: Opzionale, rappresenta la posizione corrente del cibo sulla griglia.
+  - `_rand`: Oggetto `Random` utilizzato per generare posizioni casuali.
+  - `_snake`: Istanzia l'oggetto `Snake`, che rappresenta il serpente controllato dal giocatore.
+  - `_score`: Gestisce il punteggio del giocatore e il punteggio massimo raggiunto.
 
-### Attributi:
-- `_directionRight: (Int, Int)`: direzione destra.
-- `_directionLeft: (Int, Int)`: direzione sinistra.
-- `_directionDown: (Int, Int)`: direzione giù.
-- `_directionUp: (Int, Int)`: direzione su.
-- `_isAlive: Boolean`: stato del serpente (vivo o morto).
-- `_totalEatenFoods: Int`: numero totale di cibi mangiati.
-- `_body: List[(Int, Int)]`: corpo del serpente.
-- `_direction: (Int, Int)`: direzione corrente del serpente.
+#### Metodi Pubblici del Controller
 
-### Metodi:
-- `body: List[(Int, Int)]`: restituisce il corpo del serpente.
-- `direction: (Int, Int)`: restituisce la direzione corrente del serpente.
-- `totalEatenFoods: Int`: restituisce il numero totale di cibi mangiati.
-- `changeDirection(newDir: (Int, Int)): Unit`: cambia la direzione del serpente.
-- `goUp(): Unit`: cambia la direzione del serpente verso l'alto.
-- `goDown(): Unit`: cambia la direzione del serpente verso il basso.
-- `goLeft(): Unit`: cambia la direzione del serpente verso sinistra.
-- `goRight(): Unit`: cambia la direzione del serpente verso destra.
-- `move(): Boolean`: muove il serpente nella direzione corrente e verifica le collisioni. Restituisce `true` se il serpente è vivo, altrimenti `false`.
+- **Metodi Getter**:
+  - `rows` e `columns`: Restituiscono rispettivamente il numero di righe e colonne della griglia di gioco.
+  - `placedFood`: Restituisce la posizione del cibo, se presente.
+  - `score` e `maxScore`: Restituiscono il punteggio corrente e il punteggio massimo raggiunto.
+  - `totalEatenFoods`: Restituisce il numero totale di cibi mangiati dal serpente.
+  - `snakeBody`: Restituisce la lista delle posizioni del corpo del serpente da disegnare sulla griglia.
+
+- **Metodi per la Gestione del Cibo**:
+  - `addFood()`: Aggiunge un cibo in una posizione casuale sulla griglia.
+  - `addFood(place: (Int, Int))`: Aggiunge un cibo in una posizione specificata sulla griglia.
+  - `tryEatFood(place: (Int, Int))`: Verifica se la posizione specificata contiene del cibo. Se sì, lo rimuove e aumenta il punteggio del giocatore.
+
+- **Metodi per il Movimento del Serpente**:
+  - `moveSnake()`: Muove il serpente sulla griglia. Restituisce `true` se il serpente è vivo dopo il movimento, altrimenti `false`.
+  - Metodi separati (`moveSnakeUp()`, `moveSnakeDown()`, `moveSnakeLeft()`, `moveSnakeRight()`): Muovono il serpente in direzioni specifiche.
+
+Questo design permette al controller di gestire efficacemente gli aspetti fondamentali del gioco Snake, garantendo una struttura modulare e ben organizzata per una facile manutenzione e espansione.
+
+
+
 

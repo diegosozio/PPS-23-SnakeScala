@@ -6,101 +6,56 @@ seguono: `model`, `controller` e `view`.
 
 # Model
 
-Questo package contiene le classi che rappresentano le entità del gioco Snake, rispecchiando il modello di dominio definito in fase di raccolta dei requisiti.
+Nella progettazione del gioco Snake, le classi `Snake` e `Score` giocano ruoli cruciali nel gestire rispettivamente il serpente e il punteggio. Qui di seguito esploreremo i dettagli del design implementativo di ciascuna classe e come interagiscono con l'ambiente di gioco rappresentato dalla classe `Environment`.
 
-Ogni entità è definita attraverso classi regolari, con attributi e operazioni che gestiscono lo stato e il comportamento del gioco. Di seguito, la descrizione dettagliata delle classi presenti nel package `model`, visionabili anche nel diagramma sottostante:
+#### Classe Score
 
-### Environment
-Rappresenta l'ambiente di gioco in cui il serpente si muove e interagisce con il cibo. È caratterizzato da:
-- **rows** - numero di righe della griglia.
-- **columns** - numero di colonne della griglia.
-- **scorePerFoodUnit** - punteggio assegnato per ogni unità di cibo consumata.
-- **_food** - posizione attuale del cibo nella griglia, se presente.
-- **_rand** - generatore di numeri casuali per posizionare il cibo.
-- **_snake** - istanza della classe Snake che rappresenta il serpente.
-- **_score** - istanza della classe Score che gestisce il punteggio.
+La classe `Score` gestisce il punteggio del giocatore, includendo la gestione del punteggio corrente e del punteggio massimo raggiunto, salvato su file. Ecco i dettagli salienti della sua implementazione:
+
+- **Variabili di Stato**:
+  - `_scoreFilename`: Nome del file in cui viene memorizzato il punteggio massimo.
+  - `_score` e `_maxScore`: Rispettivamente il punteggio corrente e il punteggio massimo raggiunto.
   
-#### Metodi Principali:
-- `addFood()`: aggiunge cibo in una posizione casuale della griglia.
-- `addFood(place: (Int, Int))`: aggiunge cibo nella posizione specificata.
-- `tryEatFood(place: (Int, Int))`: verifica se il serpente ha mangiato il cibo.
-- `moveSnake()`: muove il serpente e ritorna `true` se il serpente è vivo, `false` altrimenti.
-- Metodi per muovere il serpente nelle quattro direzioni (su, giù, sinistra, destra).
+- **Metodi Pubblici**:
+  - `score()`: Restituisce il punteggio corrente del giocatore.
+  - `maxScore()`: Restituisce il punteggio massimo raggiunto.
+  - `resetScore()`: Resetta il punteggio corrente a zero.
+  - `Inc(unit: Int)`: Incrementa il punteggio corrente del valore specificato.
+  - `updateMaxScore()`: Aggiorna il punteggio massimo raggiunto se il punteggio corrente supera il massimo precedente, salvando il nuovo valore su file.
+  - `deleteMaxScore()`: Cancella il file contenente il punteggio massimo.
 
-### Snake
-Rappresenta il serpente che si muove all'interno dell'ambiente di gioco.
+- **Metodi Privati**:
+  - `loadMaxScore()`: Carica il punteggio massimo dal file.
+  - `saveMaxScore(value: Int)`: Salva il punteggio massimo nel file.
 
-#### Attributi Principali:
-- **body** - lista delle coordinate che costituiscono il corpo del serpente.
-- **direction** - direzione corrente del movimento del serpente.
-- **environment** - riferimento all'ambiente di gioco.
+Questo design permette alla classe `Score` di gestire in modo sicuro e persistente il punteggio del giocatore, garantendo che il punteggio massimo venga conservato anche tra sessioni di gioco diverse.
 
-#### Metodi Principali:
-- `move()`: aggiorna la posizione del serpente.
-- Metodi per cambiare la direzione del serpente (goUp, goDown, goLeft, goRight).
+#### Classe Snake
 
-### Score
-Gestisce il punteggio del gioco.
+La classe `Snake` rappresenta il serpente nel gioco Snake, gestendo il suo corpo, direzione di movimento e interazione con l'ambiente di gioco. Ecco i dettagli del design implementativo:
 
-#### Attributi Principali:
-- **score** - punteggio corrente.
-- **maxScore** - punteggio massimo raggiunto.
+- **Variabili di Stato**:
+  - `_directionRight`, `_directionLeft`, `_directionDown`, `_directionUp`: Costanti che rappresentano le direzioni di movimento possibili del serpente.
+  - `_isAlive`: Booleano che indica se il serpente è ancora vivo.
+  - `_totalEatenFoods`: Contatore del numero di cibi mangiati dal serpente.
+  - `_body`: Lista delle posizioni che compongono il corpo del serpente.
+  - `_direction`: Direzione corrente di movimento del serpente.
 
-#### Metodi Principali:
-- `Inc(points: Int)`: incrementa il punteggio corrente di un certo numero di punti.
-- `updateMaxScore()`: aggiorna il punteggio massimo se il punteggio corrente è superiore.
+- **Metodi Pubblici**:
+  - `body()`: Restituisce la lista delle posizioni che compongono il corpo del serpente.
+  - `direction()`: Restituisce la direzione corrente di movimento del serpente.
+  - `totalEatenFoods()`: Restituisce il numero totale di cibi mangiati dal serpente.
+  - Metodi `goUp()`, `goDown()`, `goLeft()`, `goRight()`: Impostano la direzione del serpente in una delle quattro direzioni consentite.
+  - `move()`: Muove il serpente in base alla sua direzione corrente, gestendo collisioni con il cibo e i bordi della griglia. Restituisce `true` se il serpente è ancora vivo dopo il movimento, altrimenti `false`.
 
-### Diagramma delle Classi
+- **Metodi Privati**:
+  - `changeDirection(newDir: (Int, Int))`: Cambia la direzione del serpente, controllando che il cambio sia consentito in base alla direzione attuale.
 
-Ecco il diagramma delle classi del package `model`:
+Questo design modulare della classe `Snake` consente un controllo preciso e una gestione sicura del movimento del serpente, interagendo con l'ambiente di gioco rappresentato dalla classe `Environment` per verificare collisioni con il cibo e i bordi.
 
-|  Environment    |
-|-----------------|
-| - scorePerFoodUnit: Int      |
-| - _food: Option[(Int, Int)]  |
-| - _rand: Random              |
-| - _snake: Snake              |
-| - _score: Score              |
-|-------------------------------|
-| + rows: Int                  |
-| + columns: Int               |
-| + placedFood: Option[(Int, Int)] |
-| + score: Int                 |
-| + maxScore: Int              |
-| + totalEatenFoods: Int       |
-| + snakeBody: List[(Int, Int)]|
-|-------------------------------|
-| + addFood(): Unit            |
-| + addFood(place: (Int, Int)): Unit |
-| + tryEatFood(place: (Int, Int)): Boolean |
-| + moveSnake(): Boolean       |
-| + moveSnakeUp(): Unit        |
-| + moveSnakeDown(): Unit      |
-| + moveSnakeLeft(): Unit      |
-| + moveSnakeRight(): Unit     |
+### Interazione con l'Environment
 
-
-|     Snake       |
-|-----------------|
-| - body: List[(Int, Int)]     |
-| - direction: (Int, Int)      |
-| - environment: Environment   |
-| + totalEatenFoods: Int       |
-| + move(): Boolean            |
-| + goUp(): Unit               |
-| + goDown(): Unit             |
-| + goLeft(): Unit             |
-| + goRight(): Unit            |
-
-|     Score       |
-|-----------------|
-| - score: Int              |
-| - maxScore: Int           |
-| + score: Int              |
-| + maxScore: Int           |
-| + Inc(points: Int): Unit  |
-| + updateMaxScore(): Unit  |
-
+Entrambe le classi `Snake` e `Score` interagiscono con l'ambiente di gioco (`Environment`) per aggiornare lo stato del gioco, gestendo il movimento del serpente, il conteggio dei punti e il salvataggio del punteggio massimo. Questo design garantisce una separazione chiara delle responsabilità e una gestione efficiente degli aspetti fondamentali del gioco Snake.
 
 
 

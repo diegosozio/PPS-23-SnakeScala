@@ -64,7 +64,7 @@ Di seguito il diagramma delle classi coinvolte nell'applicativo con la relativa 
 
 # View
 
-In questo package sono presenti le classi che si occupano di costruire e gestire l'interfaccia utente del gioco Snake, in modo da garantire una corretta visualizzazione del gioco e delle informazioni. Queste classi sono progettate per reagire alle interazioni dell'utente con la GUI, richiamando le opportune funzioni dei controller per aggiornare lo stato del gioco.
+In questo file sono presenti le classi che si occupano di costruire e gestire l’interfaccia utente del gioco Snake, in modo da garantire una corretta visualizzazione del gioco e delle informazioni. Questa classe è progettata per reagire alle interazioni dell'utente con la GUI, richiamando le opportune funzioni dei controller per aggiornare lo stato del gioco.
 
 Sono stati previsti diversi componenti principali per organizzare in maniera più ordinata i vari elementi che compongono la View:
 

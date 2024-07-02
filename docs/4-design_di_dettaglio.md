@@ -64,7 +64,7 @@ Di seguito il diagramma delle classi coinvolte nell'applicativo con la relativa 
 
 # View
 
-In questo file sono presenti le classi che si occupano di costruire e gestire l’interfaccia utente del gioco Snake, in modo da garantire una corretta visualizzazione del gioco e delle informazioni. Questa classe è progettata per reagire alle interazioni dell'utente con la GUI, richiamando le opportune funzioni dei controller per aggiornare lo stato del gioco.
+Nel file `SnakeGameGui.scala` sono presenti le classi che si occupano di costruire e gestire l’interfaccia utente del gioco Snake, in modo da garantire una corretta visualizzazione del gioco e delle informazioni. Questa classe è progettata per reagire alle interazioni dell'utente con la GUI, richiamando le opportune funzioni dei controller per aggiornare lo stato del gioco.
 
 Sono stati previsti diversi componenti principali per organizzare in maniera più ordinata i vari elementi che compongono la View:
 
@@ -107,7 +107,7 @@ Il `ButtonPanel` è un componente verticale che contiene i pulsanti e le etichet
 Questo design permette di realizzare un'interfaccia utente chiara e reattiva per il gioco Snake, garantendo una buona esperienza utente e facilitando la gestione dello stato del gioco tramite l'interazione con i componenti grafici.
 
 # Controller
-In questo package sono presenti le classi che si occupano di gestire le interazioni tra l'utente e il sistema, in modo da garantire la corretta esecuzione delle operazioni richieste.
+Nel file `Environment.scala` sono presenti le classi che si occupano di gestire le interazioni tra l'utente e il sistema, in modo da garantire la corretta esecuzione delle operazioni richieste.
 
 Nel rispetto del pattern architetturale MVC, i controller sono stati progettati per reagire alle interazioni dell'utente con l'interfaccia grafica, per poi richiamare le opportune funzioni della logica di business.
 

@@ -1,8 +1,8 @@
 # Introduzione
 
-## Snake in Scala
+## SnakeScala
 
-Il gioco Snake implementato in linguaggio Scala è un'interpretazione del classico gioco arcade in cui il giocatore controlla un serpente che si muove all'interno di una griglia, cercando di mangiare il cibo per crescere. Il gioco termina se il serpente colpisce se stesso o i bordi della griglia. Utilizzando Scala, il movimento del serpente e la gestione del cibo sono implementati in modo funzionale, offrendo un'esperienza coinvolgente e semplice.
+Il gioco SnakeScala è un'interpretazione del classico gioco arcade in cui il giocatore controlla un serpente che si muove all'interno di una griglia, cercando di mangiare il cibo per crescere. Il gioco termina se il serpente colpisce se stesso o i bordi della griglia. Il movimento del serpente e la gestione del cibo sono implementati in modo funzionale, offrendo un'esperienza coinvolgente e semplice.
 
 ![Esempio](img/logo.png)
 

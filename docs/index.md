@@ -7,5 +7,3 @@
 5. [Design di dettaglio](4-design_di_dettaglio.md)
 6. [Implementazione](5-implementazione.md)
 7. [Retrospettiva](6-retrospettiva.md)
-
-I backlog prodotti durante gli sprint sono visualizzabili [qui](process/sprint-backlog.md).

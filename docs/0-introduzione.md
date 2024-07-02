@@ -14,7 +14,7 @@ Nel gioco, il giocatore controlla un serpente che si muove all'interno di una gr
 
 #### Movimento del Serpente
 
-Il serpente si muove continuamente in una direzione e il giocatore può controllare la direzione del movimento usando le frecce direzionali. Il serpente può muoversi su, giù, sinistra e destra. Il giocatore deve evitare che il serpente colpisca i bordi della griglia o il proprio corpo.
+Il serpente si muove continuamente in una direzione e il giocatore può controllare la direzione del movimento usando le frecce direzionali. Il serpente può muoversi verso l'alto, il basso, a sinistra e a destra, ma per invertire la direzione deve compiere una rotazione (non può invertire direttamente dall'alto al basso o da sinistra a destra). Il giocatore deve evitare che il serpente colpisca i bordi della griglia o il proprio corpo.
 
 ##### Crescita del Serpente
 

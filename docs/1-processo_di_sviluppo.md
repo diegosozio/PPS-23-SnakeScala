@@ -18,7 +18,7 @@ Le tipologie di cerimonie utilizzate nel progetto sono le seguenti:
     - **Obiettivo:** Definire il Product Backlog, che include tutti i requisiti del progetto, e stabilire gli obiettivi per lo sprint iniziale.
 
 2. **Sprint Planning**
-    - **Descrizione:** Meeting di pianificazione della durata di circa un'ora, svolto all'inizio di ogni sprint (ogni Lunedì) e coinvolge tutti i membri del team.
+    - **Descrizione:** Meeting di pianificazione della durata di circa un'ora, svolto all'inizio di ogni sprint e coinvolge tutti i membri del team.
     - **Obiettivo:** Selezionare gli item dal Product Backlog che verranno sviluppati durante lo sprint e definire le attività necessarie per raggiungere gli obiettivi dello sprint, decomponendo gli items selezionati in task.
 
 3. **Daily Scrum**

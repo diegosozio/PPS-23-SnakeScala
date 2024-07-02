@@ -43,3 +43,5 @@ Il progetto SnakeScala non solo ci ha fornito una solida base di conoscenze prat
 - Identificare azioni concrete da intraprendere per migliorare il prossimo ciclo di sviluppo.
 - Assegnare responsabilità specifiche per le azioni identificate.
 - Concludere la retrospettiva con una nota positiva e ringraziare tutti i partecipanti per il loro contributo.
+
+Lo sprint backlog di questo progetto è visionabile [qui](process/sprint-backlog.md).

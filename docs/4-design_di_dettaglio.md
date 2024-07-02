@@ -58,7 +58,7 @@ Questo design modulare della classe `Snake` consente un controllo preciso e una 
 Entrambe le classi `Snake` e `Score` interagiscono con l'ambiente di gioco (`Environment`) per aggiornare lo stato del gioco, gestendo il movimento del serpente, il conteggio dei punti e il salvataggio del punteggio massimo. Questo design garantisce una separazione chiara delle responsabilità e una gestione efficiente degli aspetti fondamentali del gioco Snake.
 
 
-
+![Esempio](img/diagrammaclassi.png)
 
 
 # View

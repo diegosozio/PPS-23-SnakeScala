@@ -6,6 +6,6 @@
 4. [Design architetturale](3-design_architetturale.md)
 5. [Design di dettaglio](4-design_di_dettaglio.md)
 6. [Implementazione](5-implementazione.md)
-7. [Conclusioni](6-conclusioni.md)
+7. [Retrospettiva](6-retrospettiva.md)
 
 I backlog prodotti durante gli sprint sono visualizzabili [qui](process/sprint-backlog.md).

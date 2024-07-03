@@ -110,17 +110,14 @@ ScalaTest è un framework di testing per Scala che offre un'ampia gamma di stili
 
 ### CI/CD
 
-GitHub Actions è una piattaforma di automazione integrata direttamente in GitHub, progettata per semplificare e automatizzare il processo di sviluppo del software. Consente di eseguire una serie di attività, come build e test, direttamente dal tuo repository GitHub.
+In tema di Continuous Integration e Continuous Deployment, abbiamo introdotto GitHub Actions, una piattaforma di automazione integrata in GitHub, progettata per semplificare e automatizzare il processo di sviluppo del software. Consente di eseguire attività come build e test direttamente dal repository GitHub.
 
-#### Caratteristiche Principali
+Nel nostro progetto sono stati configurati due comportamenti principali:
 
-- **Integrazione con GitHub:** GitHub Actions è completamente integrato in GitHub, il che significa che puoi gestire facilmente i tuoi workflow di automazione direttamente dal tuo repository GitHub.
-- **Flussi di Lavoro Configurabili:** Puoi definire flussi di lavoro personalizzati utilizzando file YAML, che specificano le azioni da eseguire e i trigger che attivano tali azioni.
-- **Ampia Libreria di Azioni:** GitHub Actions offre una vasta libreria di azioni predefinite che puoi utilizzare per eseguire una varietà di compiti.
-- **Integrazione con l'Ecosistema GitHub:** GitHub Actions si integra perfettamente con altre funzionalità di GitHub, come le notifiche, le issue e i commenti nelle pull request.
-- **Scalabilità e Flessibilità:** Puoi configurare flussi di lavoro complessi e scalabili con GitHub Actions, adattandoli alle esigenze del tuo progetto.
-
-Ad ogni push del codice, GitHub Actions testa il codice e genera il file JAR come artifact. Inoltre, ad ogni push di documentazione, viene generata la relativa pagina di relazione, assicurando che entrambi i componenti del progetto siano sempre aggiornati e pronti per la distribuzione. Questa funzionalità è stata implementata nel nostro sistema per garantire un flusso di lavoro continuo ed efficiente.
+- Ad ogni push del codice, GitHub Actions testa il codice e genera il file JAR come artifact.
+- Ad ogni push della documentazione, GitHub Pages genera la relativa pagina di relazione.
+  
+Questa duplice configurazione assicura che entrambi i componenti del progetto siano sempre aggiornati e pronti per la distribuzione.
 
 ### Documentazione
 

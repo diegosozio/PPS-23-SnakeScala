@@ -119,4 +119,4 @@ Qui di seguito sono elencati gli sprint con le relative date di inizio e fine, i
 #### Dettagli aggiuntivi:
 - Nel terzo sprint, il progetto si arricchisce con l'implementazione della classe `Score` per la gestione del punteggio. La classe `GUI` viene migliorata con l'aggiunta dei pulsanti per start, pausa e restart. Il controller gestisce anche il game over, portando così alla conclusione dei lavori di sviluppo con questo sprint.
 
-
+[Torna al Processo di Sviluppo](../1-processo_di_sviluppo.md)

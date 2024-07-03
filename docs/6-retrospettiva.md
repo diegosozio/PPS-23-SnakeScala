@@ -41,4 +41,3 @@ Guardando al futuro, intendiamo continuare a migliorare e ottimizzare SnakeScala
 
 Il progetto SnakeScala non solo ci ha fornito una solida base di conoscenze pratiche in Scala, ma ha anche rafforzato il nostro impegno verso la collaborazione, l'innovazione e la continua ricerca di eccellenza nello sviluppo software.
 
-Lo sprint backlog di questo progetto è visionabile [qui](process/sprint-backlog.md).

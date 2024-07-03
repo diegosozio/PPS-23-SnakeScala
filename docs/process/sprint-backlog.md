@@ -28,9 +28,8 @@ Il presente documento rappresenta il registro delle attività pianificate e comp
 | 22  | Preparazione della relazione finale                      | 6h           |
 | **Totale** |                                                                       | **78h**      |
 
-Per ogni sprint il team deve stimare con precisione il tempo necessario per completare ogni attività in ore di lavoro effettivo. Un'ora di lavoro effettivo non include pause, interruzioni o attività non pertinenti allo sprint. Una giornata lavorativa è considerata pari a 8 ore. Pertanto, per esprimere la durata di un'attività in giorni lavorativi, occorre convertirla in ore (ad esempio, 2 giorni equivalgono a 16 ore).
 
-Qui di seguito sono elencate le iterazioni con le relative date di inizio e fine, insieme alle attività svolte e alle stime di durata in ore o giorni lavorativi.
+Qui di seguito sono elencati gli sprint con le relative date di inizio e fine, insieme alle attività svolte, alle stime di durata in ore e alle ore realmente spese nello sviluppo del singolo task.
 
 ### Sprint 1 (15 maggio 2024 - 28 maggio 2024)
 

@@ -104,7 +104,7 @@ In sintesi, SBT offre una solida infrastruttura per lo sviluppo di progetti Scal
 ScalaTest è un framework di testing per Scala che offre un'ampia gamma di stili di test, dai classici test unitari ai test di integrazione più complessi. Con ScalaTest è possibile scrivere test strutturati utilizzando una varietà di stili come FunSuite, FlatSpec, WordSpec e molti altri. Grazie alla sua sintassi intuitiva e flessibile, ScalaTest semplifica il processo di scrittura e esecuzione dei test, permettendo la verifica del comportamento del codice. Troviamo tra gli aspetti positivi:
 
 - **Sintassi Intuitiva:** ScalaTest offre una sintassi intuitiva e flessibile che rende la scrittura dei test un'attività piacevole e accessibile.
-- **Diversi Stili di Test:** Con ScalaTest, puoi scegliere tra una varietà di stili di test, ognuno progettato per adattarsi alle esigenze specifiche del tuo progetto.
+- **Diversi Stili di Test:** Con ScalaTest si può scegliere tra una varietà di stili di test, ognuno progettato per adattarsi alle esigenze specifiche del tuo progetto.
 - **Espressività:** I test scritti con ScalaTest sono espressivi e leggibili, consentendo di comunicare facilmente l'intento del test.
 - **Facilità d'Uso:** ScalaTest semplifica il processo di scrittura, esecuzione e manutenzione dei test, riducendo al minimo lo sforzo richiesto per verificare il comportamento del codice.
 

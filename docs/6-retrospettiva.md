@@ -33,15 +33,12 @@
     - Una pianificazione dettagliata delle attività e una stima accurata del tempo sono fondamentali per evitare ritardi e migliorare la qualità del lavoro svolto.
 - Collaborazione e Comunicazione:
     - La comunicazione aperta e la collaborazione tra i membri del team hanno giocato un ruolo critico nel superare le sfide e nel garantire una progressione fluida del progetto.
-
+- Capacità Tecniche:
+    - Abbiamo acquisito competenze tecniche nel linguaggio Scala e nel framework di test ScalaTest, migliorando la nostra abilità nello sviluppo e nel testing del software.
+      
 ## Prospettive Future:
 Guardando al futuro, intendiamo continuare a migliorare e ottimizzare SnakeScala. Questo include l'implementazione di nuove funzionalità, come modalità multiplayer, miglioramenti nell'interfaccia utente e una maggiore copertura dei test. Inoltre, miriamo a consolidare le nostre competenze nello sviluppo di applicazioni Scala e a esplorare altre opportunità per applicare le conoscenze acquisite.
 
 Il progetto SnakeScala non solo ci ha fornito una solida base di conoscenze pratiche in Scala, ma ha anche rafforzato il nostro impegno verso la collaborazione, l'innovazione e la continua ricerca di eccellenza nello sviluppo software.
-
-## Discussione Finale e Azioni Future
-- Identificare azioni concrete da intraprendere per migliorare il prossimo ciclo di sviluppo.
-- Assegnare responsabilità specifiche per le azioni identificate.
-- Concludere la retrospettiva con una nota positiva e ringraziare tutti i partecipanti per il loro contributo.
 
 Lo sprint backlog di questo progetto è visionabile [qui](process/sprint-backlog.md).

@@ -29,7 +29,7 @@ Per l'Utente:
 
 Per il Sistema:
 1. Il sistema deve poter gestire il movimento del serpente sulla mappa.
-2. Il sistema deve poter generare casualmente la posizione del cibo sulla mappa con il vincolo che due mele occupino la stessa posizione.
+2. Il sistema deve poter generare casualmente la posizione del cibo sulla mappa con il vincolo che due cibi occupino la stessa posizione.
 3. Il sistema deve poter riconoscere quando il serpente mangia il cibo e aumentare la sua lunghezza.
 4. Il sistema deve poter riconoscere la fine del gioco quando il serpente colpisce il bordo della mappa.
 5. Il sistema deve poter riconoscere la fine del gioco quando il serpente collide con il proprio corpo.

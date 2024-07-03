@@ -195,13 +195,9 @@ Entrambi i membri del team hanno concordato sulla scelta di utilizzare SBT come 
 Io mi sono occupato di scrivere il file di configurazione build.sbt di SnakeGameGui, definendo le dipendenze del progetto e le regole per determinare la corretta versione delle librerie utilizzate.
 
 ## Documentazione e Github Action 
-Mi sono assunto il compito di redigere e gestire la documentazione del progetto in modo efficace e efficiente. Per rendere questo processo più fluido e automatizzato, ho configurato GitHub Actions. Questo strumento è stato utilizzato per eseguire automatizzazioni e flussi di lavoro che garantiscono la coerenza e la precisione della documentazione.
+Mi sono assunto il compito di redigere e gestire la documentazione del progetto in modo efficace ed efficiente. Per rendere questo processo più fluido e automatizzato, ho configurato GitHub Actions, uno strumento che esegue automatizzazioni e flussi di lavoro, garantendo coerenza e precisione nella documentazione.
 
-Con GitHub Actions, ho implementato procedure automatizzate per:
-
-1. **Build e Deploy della Documentazione**: Ho configurato flussi di lavoro che si attivano ogni volta che vengono apportate modifiche alla documentazione nel repository. Questi flussi di lavoro eseguono la generazione automatica della documentazione, garantendo che sia sempre aggiornata rispetto all'ultima versione del codice.
-
-2. **Gestione delle Versioni della Documentazione**: Utilizzando GitHub Actions, ho implementato meccanismi per gestire le versioni della documentazione. Questo include la generazione di documentazione per versioni specifiche del software e la corretta archiviazione delle versioni precedenti.
+Ho implementato procedure automatizzate per il build e deploy della documentazione. Ogni volta che vengono apportate modifiche alla documentazione nel repository, questi flussi di lavoro generano automaticamente la documentazione, assicurando che sia sempre aggiornata.
 
 L'uso di GitHub Actions ha migliorato significativamente l'efficienza del nostro team nello sviluppo e nella manutenzione della documentazione del progetto. Ha ridotto il carico manuale, migliorato la coerenza e ha permesso al team di concentrarsi maggiormente sullo sviluppo del software senza compromettere la qualità della documentazione.
 

@@ -8,7 +8,7 @@ Per il gioco Snake, l'architettura scelta si basa sul pattern MVC (Model-View-Co
 
 L'architettura prevede tre componenti principali:
 
-1. **Model**: Contiene la logica di business del gioco Snake, inclusi i meccanismi per gestire il movimento del serpente, la generazione del cibo e il rilevamento delle collisioni. Lo stato attuale del gioco è incapsulato all'interno del Model. Esso è progettato per essere immutabile, e può essere accessibile all'esterno solo tramite funzioni specifiche. Le modifiche allo stato avvengono tramite la funzione `update`, che prende in input un'azione e aggiorna lo stato di conseguenza.
+1. **Model**: Contiene la logica di business del gioco Snake, inclusi i meccanismi per gestire il movimento del serpente, la generazione del cibo e il rilevamento delle collisioni. Lo stato attuale del gioco è incapsulato all'interno del Model. Esso è progettato per essere immutabile, e può essere accessibile all'esterno solo tramite funzioni specifiche.
 
 2. **Controller**: Gestisce le interazioni dell'utente con il gioco, implementando la logica di input e di accesso al Model. I Controller ricevono input dall'utente e agiscono di conseguenza sul Model. Sono gli unici in grado di modificare lo stato del gioco. Una volta effettuata una modifica, i Controller notificano la View per aggiornare l'interfaccia grafica.
 

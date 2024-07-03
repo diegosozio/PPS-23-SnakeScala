@@ -18,3 +18,5 @@ Ho partecipato come reviewer allo sviluppo dell'entità Score che incapsula la s
 
 ## Test
 Ho partecipato alle fasi di test dell'applicativo durante tutte le sprint di sviluppo.
+
+[Torna all'implementazione](../5-implementazione.md)
